@@ -16,7 +16,7 @@
 5.	Upon login show the user their profile page only and allow update of first name, last name, address. All other fields should not be editable.
 6.	Your REST API should have one endpoint for both SAVE and UPDATE functionality.
 7.	Fork this repository for your code changes
-8.  Mandatory to provide a code and workable pplication walk through 
+8.  Mandatory to provide a code and workable application walk through 
 
 ## Tech Stack:  
 Springboot  
