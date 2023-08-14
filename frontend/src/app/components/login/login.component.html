@@ -1,0 +1,32 @@
+<div class="container py-4">
+
+    <form class="mt-4" [formGroup]="userLoginForm" (submit)="login()">
+        <div class="row">
+            <div class="col-6 mx-auto mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" formControlName="username">
+                <div *ngIf="userLoginForm.get('username').invalid && (userLoginForm.get('username').dirty || userLoginForm.get('username').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="userLoginForm.get('username').errors?.['required']">
+                        Username is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 mx-auto mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <div *ngIf="userLoginForm.get('password').invalid && (userLoginForm.get('password').dirty || userLoginForm.get('password').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="userLoginForm.get('password').errors?.['required']">
+                        Password is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</div>

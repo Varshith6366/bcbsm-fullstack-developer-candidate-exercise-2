@@ -1,0 +1,134 @@
+<div class="container py-4">
+    <h2 class="text-primary">User Profile</h2>
+    <form class="mt-4" [formGroup]="registrationForm" (submit)="signup()">
+        <div class="row">
+            <!-- Username -->
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" formControlName="username">
+                <div *ngIf="registrationForm.get('username').invalid && (registrationForm.get('username').dirty || registrationForm.get('username').touched)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="registrationForm.get('username').errors?.['required']">
+                        Username is required.
+                    </div>
+                    <div *ngIf="registrationForm.get('username').errors?.['pattern']">
+                        Only alphanumeric characters are allowed.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <div *ngIf="registrationForm.get('password').invalid && (registrationForm.get('password').dirty || registrationForm.get('password').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registrationForm.get('password').errors?.['required']">
+                        Password is required
+                    </div>
+                    <div *ngIf="registrationForm.get('password').errors?.['pattern']">
+                        Password must have at least one capital letter, one number, and one special character.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Date of Birth</label>
+                <input type="text" class="form-control" formControlName="dob" placeholder="MM-DD-YYYY">
+                <div *ngIf="registrationForm.get('dob').invalid && (registrationForm.get('dob').dirty || registrationForm.get('dob').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registrationForm.get('dob').errors?.['required']">
+                        Date of Birth is required.
+                    </div>
+                    <div *ngIf="registrationForm.get('dob').errors?.['pattern']">
+                        Invalid date format. Please use YYYY-MM-DD.
+                    </div>
+                </div>
+            </div>
+
+            <!-- First Name -->
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" formControlName="firstName">
+                <div *ngIf="registrationForm.get('firstName').invalid && (registrationForm.get('firstName').dirty || registrationForm.get('firstName').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registrationForm.get('firstName').errors?.['required']">
+                        First Name is required.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" formControlName="lastName">
+                <div *ngIf="registrationForm.get('lastName').invalid && (registrationForm.get('lastName').dirty || registrationForm.get('lastName').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registrationForm.get('lastName').errors?.['required']">
+                        Last Name is required.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Street Address -->
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Street Address</label>
+                <textarea class="form-control" rows="1" formControlName="streetAddress"></textarea>
+                <div *ngIf="registrationForm.get('streetAddress').invalid && (registrationForm.get('streetAddress').dirty || registrationForm.get('streetAddress').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registrationForm.get('streetAddress').errors?.['required']">
+                        Street Address is required.
+                    </div>
+                </div>
+            </div>
+
+            <!-- City -->
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" formControlName="city">
+                <div *ngIf="registrationForm.get('city').invalid && (registrationForm.get('city').dirty || registrationForm.get('city').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registrationForm.get('city').errors?.['required']">
+                        City is required.
+                    </div>
+                </div>
+            </div>
+
+            <!-- State -->
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">State</label>
+                <select class="form-control" formControlName="state">
+                    <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                </select>
+                <div *ngIf="registrationForm.get('state').invalid && (registrationForm.get('state').dirty || registrationForm.get('state').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registrationForm.get('state').errors?.['required']">
+                        State is required.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zip Code -->
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Zip code</label>
+                <input type="text" class="form-control" formControlName="zipCode">
+                <div *ngIf="registrationForm.get('zipCode').invalid && (registrationForm.get('zipCode').dirty || registrationForm.get('zipCode').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registrationForm.get('zipCode').errors?.['required']">
+                        Zip code is required.
+                    </div>
+                    <div *ngIf="registrationForm.get('zipCode').errors?.['pattern']">
+                        Invalid Zip code. Use the format XXXXX.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Signup</button>
+        </div>
+    </form>
+</div>

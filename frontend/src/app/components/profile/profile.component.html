@@ -1,0 +1,91 @@
+<div class="container py-4">
+    <h2 class="text-primary">User Profile</h2>
+    <form class="mt-4" [formGroup]="profileForm" (submit)="updateProfile()">
+        <div class="row">
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" formControlName="username">
+            </div>
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Date of Birth</label>
+                <input type="text" class="form-control" formControlName="dob">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" formControlName="firstName">
+                <div *ngIf="profileForm.get('firstName').invalid && (profileForm.get('firstName').dirty || profileForm.get('firstName').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="profileForm.get('firstName').errors?.['required']">
+                        First Name is required.
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" formControlName="lastName">
+                <div *ngIf="profileForm.get('lastName').invalid && (profileForm.get('lastName').dirty || profileForm.get('lastName').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="profileForm.get('lastName').errors?.['required']">
+                        Last Name is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Street Address</label>
+                <textarea class="form-control" rows="1" formControlName="streetAddress"></textarea>
+                <div *ngIf="profileForm.get('streetAddress').invalid && (profileForm.get('streetAddress').dirty || profileForm.get('streetAddress').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="profileForm.get('streetAddress').errors?.['required']">
+                        Street Address is required.
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" formControlName="city">
+                <div *ngIf="profileForm.get('city').invalid && (profileForm.get('city').dirty || profileForm.get('city').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="profileForm.get('city').errors?.['required']">
+                        City is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">State</label>
+                <select class="form-control" formControlName="state">
+                    <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                </select>
+                <div *ngIf="profileForm.get('state').invalid && (profileForm.get('state').dirty || profileForm.get('state').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="profileForm.get('state').errors?.['required']">
+                        State is required.
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 col-md-6 col-12">
+                <label class="form-label">Zip code</label>
+                <input type="text" class="form-control" formControlName="zipCode">
+                <div *ngIf="profileForm.get('zipCode').invalid && (profileForm.get('zipCode').dirty || profileForm.get('zipCode').touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="profileForm.get('zipCode').errors?.['required']">
+                        Zip code is required.
+                    </div>
+                    <div *ngIf="profileForm.get('zipCode').errors?.['pattern']">
+                        Invalid Zip code. Use the format XXXXX.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>
